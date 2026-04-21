@@ -1,94 +1,51 @@
 # Execution Plan
 
-## Milestone 0: Lock the target
+## 마일스톤 0: 목표 확정
 
-### Goal
+### 목표
 
-Freeze the target problem, constraints, and non-goals for the Linear priority scoring agent.
+CS 수집 및 트리아지 워크플로우의 문제 정의, 제약 조건, 비범위를 확정한다.
 
-### Acceptance criteria
+### 완료 조건
 
-- `spec.md` exists and is non-empty.
-- Scope, constraints, success criteria, and out-of-scope items are explicit.
-- The demo path does not depend on live Linear auth.
+- `spec.md`가 현재 목표를 정확히 설명한다.
+- 데모 경로가 실제 외부 인증 실패에 막히지 않는다.
 
-## Milestone 1: Define the analysis contract
+## 마일스톤 1: 입력/출력 계약 정리
 
-### Goal
+### 목표
 
-Define the input and output contract for one-issue analysis.
+하나의 CS 티켓이 어떤 입력 필드를 가지고 어떤 triage 결과를 출력해야 하는지 명확히 정의한다.
 
-### Acceptance criteria
+### 완료 조건
 
-- Required input fields are enumerated.
-- Required output fields are enumerated.
-- The scoring dimensions are explicit and stable.
-- Deterministic mapping is described in docs before code is written.
+- 입력 필드가 명시되어 있다.
+- category, severity, route, Slack/Linear 후속 액션이 명시되어 있다.
 
-## Milestone 2: Scaffold the implementation slice
+## 마일스톤 2: 실행 가능한 최소 구현
 
-### Goal
+### 목표
 
-Create the minimum project structure needed to build the vertical slice.
+시드 또는 실제 수집 입력을 바탕으로 정규화, triage, 보고서 생성을 끝까지 수행하는 최소 구현을 만든다.
 
-### Acceptance criteria
+### 완료 조건
 
-- The repo has a clear location for source code, tests, and assets if they are added.
-- There is one obvious entry point for running the MVP.
-- The project can be verified with repeatable commands.
+- `src/`와 `tests/`에 현재 워크플로우 코드가 존재한다.
+- `make test`와 `make demo`가 동작한다.
 
-## Milestone 3: Ship the core scoring loop
+## 마일스톤 3: 실제 외부 write 검증
 
-### Goal
+### 목표
 
-Implement issue normalization, structured extraction, and deterministic scoring for one issue.
+Linear 이슈 생성과 Slack 알림 전송이 실제로 가능함을 검증한다.
 
-### Acceptance criteria
+### 완료 조건
 
-- One sample issue can be analyzed end to end.
-- The system outputs a priority band and dimension breakdown.
-- The result includes evidence and missing information.
-- The score is reproducible for the same normalized input.
+- 실제 Linear 이슈 또는 코멘트 write가 확인된다.
+- 실제 Slack 알림 전송이 확인된다.
 
-## Milestone 4: Add the review surface
+## 운영 규칙
 
-### Goal
-
-Present the result in a way that a human can approve or reject.
-
-### Acceptance criteria
-
-- The result includes a rationale and confidence explanation.
-- A draft comment is generated for Linear.
-- The flow makes it clear that write-back is not automatic.
-
-## Milestone 5: Verification hardening
-
-### Goal
-
-Make the run continuously inspectable and safe to resume.
-
-### Acceptance criteria
-
-- `make test`, `make lint`, `make typecheck`, and `make build` all exist.
-- Verification runs locally without undocumented setup.
-- The audit log shows what changed, what passed, and what remains.
-
-## Milestone 6: Demo readiness
-
-### Goal
-
-Prepare a clean demo story for the hackathon.
-
-### Acceptance criteria
-
-- There are at least three representative issue scenarios or fixtures.
-- The demo can explain why a loud request is not always high priority.
-- The repository explains the MVP, known gaps, and next steps.
-
-## Operating rules during the run
-
-- Work one milestone at a time.
-- Do not start the next milestone until the current one has explicit evidence in `documentation.md`.
-- If external integration blocks progress, fall back to mocked or pasted issue data and continue.
-- Prefer small, reviewable patches over broad speculative scaffolding.
+- 중복 생성보다 no-op가 낫다.
+- dedupe 기준은 명시적으로 기록한다.
+- live source 접근이 막히면 fallback 입력을 사용하되 그 사실을 기록한다.

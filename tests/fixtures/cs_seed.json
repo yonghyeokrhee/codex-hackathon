@@ -1,0 +1,46 @@
+{
+  "tickets": [
+    {
+      "id": "seed-1",
+      "source": "email",
+      "received_at": "2026-04-20T08:30:00+09:00",
+      "language": "ko",
+      "customer_name": "Atlas Ads",
+      "title": "How do I resend the onboarding email?",
+      "raw_content": "We need a quick answer for the customer success team. The onboarding email was lost in spam and we need the resend flow documented.",
+      "attachments_summary": "one screenshot of the inbox"
+    },
+    {
+      "id": "seed-2",
+      "source": "web",
+      "received_at": "2026-04-20T09:10:00+09:00",
+      "language": "en",
+      "customer_org": "Northwind",
+      "ux_area": "report-filter-label",
+      "prior_similar_ux_count": 2,
+      "title": "  The report filter label is confusing  ",
+      "raw_content": "The dashboard filter says Region but it actually filters by office. Users keep missing the report they want because the label is unclear.",
+      "attachments_summary": "none"
+    },
+    {
+      "id": "seed-3",
+      "source": "chat",
+      "received_at": "2026-04-20T09:45:00+09:00",
+      "language": "en",
+      "customer_name": "Bluebird",
+      "title": "Checkout fails when I click Pay",
+      "raw_content": "The payment flow throws a 500 error and the order never completes. This blocks customers from finishing the purchase.",
+      "attachments_summary": "screen recording"
+    },
+    {
+      "id": "seed-4",
+      "source": "email",
+      "received_at": "2026-04-20T10:05:00+09:00",
+      "language": "en",
+      "customer_org": "Signal Labs",
+      "title": "Bid sync is delayed after integration",
+      "raw_content": "Our bidding partner is connected, but the integration lags by 30 minutes and the synced values arrive too late for the campaign.",
+      "attachments_summary": "log excerpt"
+    }
+  ]
+}

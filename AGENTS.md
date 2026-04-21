@@ -1,36 +1,36 @@
-# Repository Guidelines
+# 저장소 가이드라인
 
-## Project Structure & Module Organization
-This repository is intentionally minimal at the moment. The top level currently contains only [README.md](/Users/yong/codex-hackathon/README.md). Add new application code under a dedicated source directory such as `src/`, place tests in `tests/`, and keep static assets in `assets/` if they are introduced. Avoid mixing implementation, fixtures, and documentation at the repository root.
+## 프로젝트 구조와 모듈 구성
+이 저장소는 현재 의도적으로 최소한의 구조만 갖추고 있습니다. 최상위에는 현재 [README.md](/Users/yong/codex-hackathon/README.md)만 있습니다. 새 애플리케이션 코드는 `src/` 같은 전용 소스 디렉터리 아래에 추가하고, 테스트는 `tests/`에 두며, 정적 자산이 생기면 `assets/`에 보관하세요. 구현 코드, 픽스처, 문서를 저장소 루트에 섞어 두지 마세요.
 
-## Build, Test, and Development Commands
-There is no build or test toolchain configured yet. For now, the main inspection commands are:
+## 빌드, 테스트, 개발 명령어
+아직 빌드나 테스트 도구 체인이 설정되어 있지 않습니다. 현재는 아래 점검 명령어를 주로 사용합니다.
 
-- `ls -la` to inspect the repository contents
-- `rg --files` to list tracked files quickly
-- `git status` to review local changes before committing
+- `ls -la`: 저장소 내용 확인
+- `rg --files`: 추적 중인 파일 빠르게 나열
+- `git status`: 커밋 전 로컬 변경 사항 검토
 
-When adding tooling, document the canonical commands here and in `README.md` (for example `npm test`, `pytest`, or `make build`).
+도구를 추가할 때는 여기와 `README.md`에 표준 명령어를 함께 문서화하세요. 예: `npm test`, `pytest`, `make build`
 
-## Coding Style & Naming Conventions
-Keep files and directories consistently named and easy to scan. Use:
+## 코딩 스타일과 네이밍 규칙
+파일과 디렉터리는 일관되고 훑어보기 쉽게 이름을 유지하세요. 다음 기준을 사용합니다.
 
-- `snake_case` for Markdown or data filenames where appropriate
-- short, descriptive directory names such as `src/`, `tests/`, and `docs/`
-- Markdown headings in sentence case or title case, used consistently within a file
+- Markdown 또는 데이터 파일명에는 적절할 때 `snake_case` 사용
+- `src/`, `tests/`, `docs/`처럼 짧고 설명적인 디렉터리명 사용
+- Markdown 제목은 문장형 또는 제목형 표기를 택해 파일 내에서 일관되게 사용
 
-Prefer ASCII unless a file already requires Unicode. Keep formatting automated once a formatter is introduced, and record the formatter and config file in this guide.
+파일이 이미 유니코드를 필요로 하지 않는 한 ASCII를 우선합니다. 포매터가 도입되면 자동 포맷팅을 기준으로 삼고, 어떤 포매터와 설정 파일을 쓰는지 이 가이드에 기록하세요.
 
-## Testing Guidelines
-No test framework is configured yet. When tests are added, keep them in `tests/` and mirror the source layout. Name test files after the unit they cover, such as `tests/test_parser.py` or `src/foo.test.ts`. Every new feature or bug fix should include a reproducible test when practical.
+## 테스트 가이드라인
+아직 테스트 프레임워크는 설정되어 있지 않습니다. 테스트가 추가되면 `tests/` 아래에 두고 소스 구조를 반영하세요. 테스트 파일 이름은 다루는 단위에 맞춰 짓습니다. 예: `tests/test_parser.py`, `src/foo.test.ts` 새 기능이나 버그 수정에는 가능하면 재현 가능한 테스트를 함께 포함하세요.
 
-## Commit & Pull Request Guidelines
-The current Git history uses short, plain commit messages such as `first commit`. Prefer concise, imperative commit subjects going forward, for example:
+## 커밋과 풀 리퀘스트 가이드라인
+현재 Git 히스토리에는 `first commit`처럼 짧고 단순한 커밋 메시지가 사용되고 있습니다. 앞으로는 다음처럼 간결한 명령형 제목을 권장합니다.
 
 - `Add AGENTS contributor guide`
 - `Create initial src and tests layout`
 
-Pull requests should explain the change, note any setup or follow-up work, and link related issues when available. Include screenshots only for UI changes.
+풀 리퀘스트에는 변경 내용, 필요한 설정이나 후속 작업, 관련 이슈를 함께 설명하세요. 스크린샷은 UI 변경이 있을 때만 포함하면 됩니다.
 
-## Documentation Expectations
-Keep `README.md` focused on project usage and setup, and use this file for contributor workflow. Update both when introducing new structure, tooling, or conventions so the repository stays self-describing.
+## 문서화 기대사항
+`README.md`는 프로젝트 사용법과 설정에 집중시키고, 이 파일은 기여자 워크플로우용으로 사용하세요. 새로운 구조, 도구, 규칙을 도입할 때는 두 문서를 함께 갱신해 저장소만 봐도 이해할 수 있도록 유지하세요.

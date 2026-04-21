@@ -1,67 +1,28 @@
 # Long-Running Job Runbook
 
-## Purpose
+## 목적
 
-This file tells the agent how to operate while developing the `Linear priority scoring agent` from the storyboard and spec.
+이 문서는 CS 수집 및 트리아지 자동화가 어떤 순서로 작업해야 하는지 정리한다.
 
-## Before each work session
+## 작업 전 확인
 
-1. Read [spec.md](/Users/yong/codex-hackathon/spec.md), [plans.md](/Users/yong/codex-hackathon/plans.md), and [documentation.md](/Users/yong/codex-hackathon/documentation.md).
-2. Confirm the current milestone and the next acceptance check.
-3. Keep the Chrome tab `Run long horizon tasks with Codex` available as the execution reference.
-4. Record the session start in `documentation.md`.
+1. `spec.md`, `plans.md`, `documentation.md`를 읽는다.
+2. 최근 automation memory와 documentation 로그를 확인한다.
+3. 이미 생성된 Linear 이슈와 Slack 알림이 있는지 dedupe 기준으로 확인한다.
 
-## Execution loop
+## 실행 순서
 
-1. Pick one milestone-sized task.
-2. State the intended change in `documentation.md` before editing.
-3. Make the smallest patch that advances the current acceptance criteria.
-4. Run the verification commands:
-   - `make test`
-   - `make lint`
-   - `make typecheck`
-   - `make build`
-5. Record the outcome in `documentation.md`, including failures and follow-up actions.
-6. Stop after a clean checkpoint rather than mixing multiple milestones together.
+1. Computer Use로 접근 가능한 입력 채널을 확인한다.
+2. 신규 CS를 수집하거나 fallback sample을 사용한다.
+3. 티켓을 정규화하고 triage한다.
+4. 실제 Linear write와 Slack 전송을 수행한다.
+5. 결과를 `documentation.md`에 기록한다.
 
-## Decision rules
+## 기록 원칙
 
-- Prefer a mocked or pasted Linear issue flow before live integration.
-- Keep model outputs structured and deterministic wherever possible.
-- Do not allow the model to emit only a raw final priority without intermediate dimensions.
-- Preserve human review before any external write-back.
-- If a new idea does not help the current milestone, capture it in `documentation.md` and defer it.
-
-## Required implementation qualities
-
-- Every user-visible claim should be traceable to issue evidence or a deterministic rule.
-- Every milestone should leave the repo in a runnable, inspectable state.
-- Every external dependency or setup step should be documented immediately when introduced.
-
-## Logging requirements
-
-Every meaningful work block should append:
-
-- date or session marker
-- milestone being worked
-- intended change
-- files changed
-- verification results
-- open risks
-- next step
-
-## Safe fallback paths
-
-- If Linear auth is flaky, use a fixture or pasted payload.
-- If UI work stalls, ship the scoring loop behind a CLI or API first.
-- If model output is unstable, narrow the schema and move more logic into deterministic code.
-- If the run runs out of time, stop with a documented checkpoint and explicit next action.
-
-## Definition of done for a checkpoint
-
-A checkpoint is valid only if:
-
-- the current milestone is still coherent,
-- the repository passes the relevant verification commands,
-- `documentation.md` explains the current state,
-- and the next task is obvious to a future resume.
+- source
+- dedupe 기준
+- category / severity / route
+- Linear 링크
+- Slack 전송 결과
+- 실패와 fallback
